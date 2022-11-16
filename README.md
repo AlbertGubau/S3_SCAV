@@ -16,4 +16,5 @@ This script is able to create a video with the 4 encoded videos in mosaic form.
 This script is able to create an interactive Tkinter interface in which users can convert their videos to the desired codecs (VP8, VP9, h265 and AV1).
 
 ![](TerminalScreenshots/converter.png)
+
 | Video Converter Interface
