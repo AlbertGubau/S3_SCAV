@@ -38,6 +38,7 @@ master.open_file.configure(bg="#1c94cf")
 master.open_file.place(x=700, y=80)
 
 
+# Function to browse the file using a filedialog
 def browse_file(master):
     master.filename = fd.askopenfilename(title="Please Select a File")
     master.filelocation.configure(state='normal')
@@ -56,16 +57,18 @@ master.label_charge = tk.Label(master, font=('Roboto', 15), fg='#2e2e2e', width=
 master.label_charge.configure(bg='#2e2e2e')
 master.label_charge.place(x=530, y=135)
 
+
+# Function to convert to VP8
 def convert_to_vp8(master):
     master.label_charge.configure(text="Processing...", fg="white")
-    master.update()
+    master.update() # Just to display the processing label
 
     if os.path.exists("output_VP8.webm"):
         os.remove("output_VP8.webm")
     try:
         command_line = 'ffmpeg -i ' + str(master.filename) + ' -c:v libvpx -b:v 1M output_VP8.webm'
         os.system(command_line)
-        master.label_charge.configure(text = "Done!\u2713",fg="white")
+        master.label_charge.configure(text="Done!\u2713", fg="white")
         master.update()
     except AttributeError:
         mg.showerror('Python Error', 'Load a file please!')
