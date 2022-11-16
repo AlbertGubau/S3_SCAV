@@ -51,13 +51,22 @@ master.open_file = tk.Button(master, text="VP8", width=5, borderwidth=0, command
 master.open_file.configure(bg="#1c94cf")
 master.open_file.place(x=170, y=135)
 
+# Video Converter Label
+master.label_charge = tk.Label(master, font=('Roboto', 15), fg='#2e2e2e', width=10, height=0)
+master.label_charge.configure(bg='#2e2e2e')
+master.label_charge.place(x=530, y=135)
 
 def convert_to_vp8(master):
+    master.label_charge.configure(text="Processing...", fg="white")
+    master.update()
+
     if os.path.exists("output_VP8.webm"):
         os.remove("output_VP8.webm")
     try:
         command_line = 'ffmpeg -i ' + str(master.filename) + ' -c:v libvpx -b:v 1M output_VP8.webm'
         os.system(command_line)
+        master.label_charge.configure(text = "Done!\u2713",fg="white")
+        master.update()
     except AttributeError:
         mg.showerror('Python Error', 'Load a file please!')
 
@@ -69,11 +78,16 @@ master.open_file.place(x=260, y=135)
 
 
 def convert_to_vp9(master):
+    master.label_charge.configure(text="Processing...", fg="white")
+    master.update()
+
     if os.path.exists("output_VP9.webm"):
         os.remove("output_VP9.webm")
     try:
         command_line = 'ffmpeg -i ' + str(master.filename) + ' -c:v libvpx-vp9 -b:v 1M output_VP9.webm'
         os.system(command_line)
+        master.label_charge.configure(text="Done!\u2713", fg="white")
+        master.update()
     except AttributeError:
         mg.showerror('Python Error', 'Load a file please!')
 
@@ -85,11 +99,16 @@ master.open_file.place(x=350, y=135)
 
 
 def convert_to_h265(master):
+    master.label_charge.configure(text="Processing...", fg="white")
+    master.update()
+
     if os.path.exists("output_h265.mp4"):
         os.remove("output_h265.mp4")
     try:
         command_line = 'ffmpeg -i ' + str(master.filename) + ' -c:v libx265 -b:v 1M output_h265.mp4'
         os.system(command_line)
+        master.label_charge.configure(text="Done!\u2713", fg="white")
+        master.update()
     except AttributeError:
         mg.showerror('Python Error', 'Load a file please!')
 
@@ -101,11 +120,16 @@ master.open_file.place(x=440, y=135)
 
 
 def convert_to_av1(master):
+    master.label_charge.configure(text="Processing...", fg="white")
+    master.update()
+
     if os.path.exists("output_av1.mkv"):
         os.remove("output_av1.mkv")
     try:
         command_line = 'ffmpeg -i ' + str(master.filename) + ' -c:v libaom-av1 -b:v 1M output_av1.mkv'
         os.system(command_line)
+        master.label_charge.configure(text="Done!\u2713", fg="white")
+        master.update()
     except AttributeError:
         mg.showerror('Python Error', 'Load a file please!')
 
