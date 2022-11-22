@@ -1,4 +1,4 @@
-# S2_SCAV
+# S3_SCAV
 This is a GitHub repository that has been created to upload the results of SCAV S3.
 
 ## Task 1 (Create the videos encoded with VP8, Vp9, h265 and AV1 codecs)
